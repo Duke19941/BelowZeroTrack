@@ -1,0 +1,3 @@
+BELOWZERO Crimson Rime
+Prefixes: BelowZeroTrack\Scripts and BelowZeroTrack\Data
+Do not load @SoftTrack with this mod.

@@ -1,0 +1,2 @@
+class CfgPatches { class BelowZeroTrack_Scripts { requiredAddons[]={"DZ_Data","DZ_Scripts"}; }; };
+class CfgMods { class BelowZeroTrack { dir="BelowZeroTrack"; name="BELOWZERO Crimson Rime"; author="Dead Air Studio / BELOWZERO"; version="0.1.0"; type="mod"; dependencies[]={"Game","World","Mission"}; class defs { class gameScriptModule { files[]={"BelowZeroTrack/Scripts/3_Game"}; }; class worldScriptModule { files[]={"BelowZeroTrack/Scripts/4_World"}; }; class missionScriptModule { files[]={"BelowZeroTrack/Scripts/5_Mission"}; }; }; }; };

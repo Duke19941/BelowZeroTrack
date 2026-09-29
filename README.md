@@ -1,12 +1,7 @@
-# BELOWZERO Crimson Rime 0.1.0
+# BELOWZERO Crimson Rime 0.2.0-1.30exp
 
-Hardcore blood trail for the **BELOWZERO** server (snow Chernarus).
+Hardcore blood trail for **BELOWZERO** on **DayZ 1.30 Experimental**.
 
-Rain does nothing. Wind and storm bury the sentence. Calm cold keeps the evidence.
+Rain does nothing. Wind magnitude and snowfall bury the sentence.
 
-Look at a mark → **Read the crust (BELOWZERO)**.
-Look at a mark you want hidden → **Kick snow over it (BELOWZERO)**.
-
-Do **not** load Soft Track next to this.
-
-Staff: `$profile:BelowZeroTrack/settings.json` — set `blizzardMul` to `5` during whiteouts.
+1.30: GetWindMagnitude + GetSnowfall, no marks from motorbikes, snap to SurfaceGetType, disableSimulation on dummy, pack with 1.30 Tools.

@@ -1,11 +1,5 @@
 name = "BELOWZERO Crimson Rime";
-picture = "";
-logo = "";
-logoSmall = "";
-logoOver = "";
 tooltip = "BELOWZERO — blood on snow. Wind buries it. Rain does not.";
-overview = "BELOWZERO hardcore blood trail. Crimson on the crust. Steam while it is hot. Wind and storm bury the sentence. Rain is ignored.";
-action = "";
+overview = "BELOWZERO Crimson Rime for DayZ 1.30 Experimental. Blood on snow. Wind and snowfall bury it. Rain is ignored. Motorbikes do not write.";
 author = "Dead Air Studio / BELOWZERO";
-authorID = "";
-version = "0.1.0";
+version = "0.2.0-1.30exp";

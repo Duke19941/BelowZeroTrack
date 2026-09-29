@@ -1,1 +1,21 @@
-class BZ_Constants { static const string LOG_PREFIX="[BELOWZERO Crimson Rime] "; static const string PROFILE_DIR="$profile:BelowZeroTrack"; static const string SETTINGS_PATH="$profile:BelowZeroTrack/settings.json"; static const string MARK_CLASS="BZ_Spoor"; static const string SOUND_HOT="BZ_SpoorHot_SoundSet"; static const string SERVER_NAME="BELOWZERO"; static const float DEFAULT_DROP_SEC=3.2; static const float DEFAULT_LIFE_SEC=900; static const float DEFAULT_MIN_DIST=1.6; static const float DEFAULT_WIND_MUL=2.8; static const float DEFAULT_OVERCAST_T=0.55; static const float DEFAULT_STORM_MUL=2.2; static const float DEFAULT_BLIZZARD_MUL=1; static const int DEFAULT_MAX_MARKS=80; static const int STAGE_GONE=0; static const int STAGE_HOT=1; static const int STAGE_GLAZE=2; static const int STAGE_RIME=3; };
+class BZ_Constants
+{
+	static const string LOG_PREFIX = "[BELOWZERO Crimson Rime] ";
+	static const string PROFILE_DIR = "$profile:BelowZeroTrack";
+	static const string SETTINGS_PATH = "$profile:BelowZeroTrack/settings.json";
+	static const string MARK_CLASS = "BZ_Spoor";
+	static const string SOUND_HOT = "BZ_SpoorHot_SoundSet";
+	static const string SERVER_NAME = "BELOWZERO";
+	static const float DEFAULT_DROP_SEC = 3.2;
+	static const float DEFAULT_LIFE_SEC = 900.0;
+	static const float DEFAULT_MIN_DIST = 1.6;
+	static const float DEFAULT_WIND_MUL = 2.8;
+	static const float DEFAULT_OVERCAST_T = 0.55;
+	static const float DEFAULT_STORM_MUL = 2.2;
+	static const float DEFAULT_BLIZZARD_MUL = 1.0;
+	static const int DEFAULT_MAX_MARKS = 80;
+	static const int STAGE_GONE = 0;
+	static const int STAGE_HOT = 1;
+	static const int STAGE_GLAZE = 2;
+	static const int STAGE_RIME = 3;
+};

@@ -1,3 +1,11 @@
 BELOWZERO Crimson Rime
-Prefixes: BelowZeroTrack\Scripts and BelowZeroTrack\Data
+
+P:\BelowZeroTrack\                    source
+P:\Mods\@BelowZeroTrack\addons\       output
+
+Scripts prefix : BelowZeroTrack\Scripts
+Data prefix    : BelowZeroTrack\Data
+
+Copy mod.cpp into P:\Mods\@BelowZeroTrack\
+
 Do not load @SoftTrack with this mod.

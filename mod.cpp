@@ -1,5 +1,11 @@
 name = "BELOWZERO Crimson Rime";
+picture = "";
+logo = "";
+logoSmall = "";
+logoOver = "";
 tooltip = "BELOWZERO — blood on snow. Wind buries it. Rain does not.";
 overview = "BELOWZERO hardcore blood trail. Crimson on the crust. Steam while it is hot. Wind and storm bury the sentence. Rain is ignored.";
+action = "";
 author = "Dead Air Studio / BELOWZERO";
+authorID = "";
 version = "0.1.0";

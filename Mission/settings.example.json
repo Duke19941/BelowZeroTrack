@@ -1,0 +1,11 @@
+{
+    "enabled": true,
+    "dropSeconds": 3.2,
+    "lifetimeSeconds": 900.0,
+    "minDistance": 1.6,
+    "windMultiplier": 2.8,
+    "overcastThreshold": 0.55,
+    "stormMultiplier": 2.2,
+    "blizzardMul": 1.0,
+    "maxMarks": 80
+}

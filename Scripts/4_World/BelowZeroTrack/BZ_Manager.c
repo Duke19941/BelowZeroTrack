@@ -4,48 +4,37 @@ class BZ_Manager
 	protected ref array<BZ_Spoor> m_Marks;
 	protected ref map<PlayerBase, float> m_Cooldown;
 	protected ref map<PlayerBase, vector> m_LastPos;
-
-	static BZ_Manager Get()
-	{
-		if (!s_Instance) s_Instance = new BZ_Manager();
-		return s_Instance;
-	}
-
-	void BZ_Manager()
-	{
-		m_Marks = new array<BZ_Spoor>;
-		m_Cooldown = new map<PlayerBase, float>;
-		m_LastPos = new map<PlayerBase, vector>;
-	}
-
+	static BZ_Manager Get() { if (!s_Instance) s_Instance = new BZ_Manager(); return s_Instance; }
+	void BZ_Manager() { m_Marks = new array<BZ_Spoor>; m_Cooldown = new map<PlayerBase, float>; m_LastPos = new map<PlayerBase, vector>; }
 	void Start() { GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(Tick, 1000, true); }
-
 	protected void Tick()
 	{
 		if (!GetGame() || !GetGame().IsServer()) return;
 		BZ_Settings settings = BZ_Config.Get();
 		if (!settings || !settings.enabled) return;
-		float weatherMul = WeatherMul(settings);
 		DropFromBleeders(settings);
-		AgeMarks(weatherMul);
+		AgeMarks(WeatherMul(settings));
 	}
-
 	protected float WeatherMul(BZ_Settings settings)
 	{
 		float mul = 1.0 * settings.blizzardMul;
 		Weather weather = GetGame().GetWeather();
 		if (!weather) return mul;
-		vector wv = weather.GetWind();
-		float wind01 = wv.Length() / 20.0;
+		float wind = 0;
+		if (weather.GetWindMagnitude()) wind = weather.GetWindMagnitude().GetActual();
+		else wind = weather.GetWind().Length();
+		float wind01 = wind / 20.0;
 		if (wind01 < 0) wind01 = 0;
 		if (wind01 > 1.5) wind01 = 1.5;
 		mul = mul + (settings.windMultiplier * wind01);
 		float overcast = 0;
 		if (weather.GetOvercast()) overcast = weather.GetOvercast().GetActual();
 		if (overcast >= settings.overcastThreshold) mul = mul + (settings.stormMultiplier * overcast);
+		float snow = 0;
+		if (weather.GetSnowfall()) snow = weather.GetSnowfall().GetActual();
+		if (snow > 0.08) mul = mul + (settings.stormMultiplier * snow * 1.4);
 		return mul;
 	}
-
 	protected void DropFromBleeders(BZ_Settings settings)
 	{
 		array<Man> players = new array<Man>;
@@ -53,7 +42,7 @@ class BZ_Manager
 		for (int i = 0; i < players.Count(); i++)
 		{
 			PlayerBase pb = PlayerBase.Cast(players.Get(i));
-			if (!pb || !pb.IsAlive() || !pb.IsBleeding() || pb.IsSwimming()) continue;
+			if (!pb || !pb.IsAlive() || !pb.IsBleeding() || pb.IsSwimming() || pb.BZ_IsInTransport()) continue;
 			float cd = 0;
 			if (m_Cooldown.Contains(pb)) cd = m_Cooldown.Get(pb);
 			cd = cd - 1.0;
@@ -79,10 +68,10 @@ class BZ_Manager
 			m_Cooldown.Set(pb, drop);
 		}
 	}
-
 	protected void SpawnMark(vector pos, float life, int weight, float yaw)
 	{
 		if (pos == "0 0 0") return;
+		pos = SnapToCrust(pos);
 		BZ_Settings settings = BZ_Config.Get();
 		if (settings && m_Marks.Count() >= settings.maxMarks)
 		{
@@ -96,7 +85,13 @@ class BZ_Manager
 		mark.Arm(life, weight, yaw);
 		m_Marks.Insert(mark);
 	}
-
+	protected vector SnapToCrust(vector pos)
+	{
+		string surf = "";
+		float y = GetGame().SurfaceGetType(pos[0], pos[2], surf);
+		if (y != 0) pos[1] = y;
+		return pos;
+	}
 	protected void AgeMarks(float weatherMul)
 	{
 		for (int i = m_Marks.Count() - 1; i >= 0; i--)
